@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace FireRed
 {
-    class NPC
+  public enum Gender
     {
+        Male=1,
+        Female=2
     }
 }

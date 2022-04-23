@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4Dlka4ATQARiQV35eUUOtnrLI2bBwsfGVFdAJEunv6WYHIjXVmKpkiAqx3sIE2DWTaUN/xu43cwxbms/rDCv2Q==",
+  "dgSpecHash": "3+hvViMIV2WsFv7xeGlco6ubfquIVppFqQYziwhPXECZLESN9XCi0Y6NfNfZiAZShYKJaPsoMj+yYV3vGI9KeA==",
   "success": true,
   "projectFilePath": "C:\\Users\\AskIT\\source\\repos\\FireRed\\FireRed\\FireRed.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\AskIT\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\AskIT\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
   ],
   "logs": []
