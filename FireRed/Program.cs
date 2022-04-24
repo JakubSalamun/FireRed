@@ -6,24 +6,35 @@ using FireRed.Postacie;
 
 namespace FireRed
 {
-    class Program 
+    class Program : Menu
     {
   
         static void Main(string[] args)
         {
-            wczytaniMenu();
+
+            Menu menu = new Menu();
+            if (menu.jsonDeserialize())
+            {
+                Console.WriteLine("Witaj przygodo");
+
+            }
+            else
+            {
+            wczytaniMenuPoczatkowe();
+            }
         }
 
-        static void wczytaniMenu()
+        static void wczytaniMenuPoczatkowe()
         {
             Menu menu = new Menu();
             var plikPrzywitaniaTxt = File.ReadAllText(@"C:\Users\AskIT\source\repos\FireRed\FireRed\Tekst\przywitanie.txt");
             menu.Print(plikPrzywitaniaTxt);
             menu.protagonistaInfo();
             menu.antagonistaInfo();
-            menu.jsonDeserialize();
 
-            //var plikPrzedstawieniePostaci = File.ReadAllText(@"C:\Users\AskIT\source\repos\FireRed\FireRed\Tekst\przedstawieniePostaci.txt");
+           // menu.jsonDeserialize();
+
+            var plikPrzedstawieniePostaci = File.ReadAllText(@"C:\Users\AskIT\source\repos\FireRed\FireRed\Tekst\przedstawieniePostaci.txt");
             //var podmianaDanychPostaci = plikPrzedstawieniePostaci.Replace("{imiePostaci}", protagonista.nazwaPostaci);           
             //menu.Print(podmianaDanychPostaci);
             //protagonistaInfo();

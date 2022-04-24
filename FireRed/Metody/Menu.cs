@@ -52,13 +52,10 @@ namespace FireRed.Metody
                     antagonista.nazwaPostaci = imiePostaciAnta;
                     antagonista.gender = Gender.Male;
                     break;
-
-                 default:
-                    Console.WriteLine("Podaj nazwe:");
-                    string imiePostaciAntaDefault = Console.ReadLine();
-                    antagonista.nazwaPostaci = imiePostaciAntaDefault;
+                case "":
+                    antagonista.nazwaPostaci = "Bary";                  
                     antagonista.gender = Gender.Male;
-                    break;
+                    break;          
             }
             antagonista.przedstawSie();
 
@@ -89,11 +86,19 @@ namespace FireRed.Metody
         }
 
         //Pobranie danych do pliku Json, 
-        public void jsonDeserialize()
+        public bool jsonDeserialize()
         {
+            
             string wczytanieJSON = File.ReadAllText(@"C:\Users\AskIT\source\repos\FireRed\FireRed\JSON\protagonistaSerialized.json");
             Protagonista protagonista = JsonConvert.DeserializeObject<Protagonista>(wczytanieJSON);
-            protagonista.przedstawSie();
+            if (wczytanieJSON != null)
+            {
+                return true;
+            }
+            else
+                return false;
+            
+            //protagonista.przedstawSie();
             //Console.WriteLine(protagonista.nazwaPostaci);
             //Console.WriteLine(protagonista.gender);
         }
