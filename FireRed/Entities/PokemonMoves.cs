@@ -12,7 +12,7 @@ namespace FireRed.Entities
         public bool PokemonCanUse { get; set; }
         public int MoveLV { get; set; }
         public string MoveName { get; set; }
-        public string MoveType { get; set; }
+        public string MoveType { get; set; }//można zmienić w enum od typu ruchu
         public string MoveCategory { get; set; } //można zmienić w enum fizyczny/specjalny/status
         public int MovePower { get; set; }
         public int MoveAccurancy { get; set; }

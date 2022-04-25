@@ -1,18 +1,26 @@
 ﻿using System;
 using System.IO;
+using FireRed.Entities;
 using FireRed.Metody;
 using FireRed.Postacie;
-
+using FireRed.SeedData;
 
 namespace FireRed
 {
     class Program : Menu
     {
-  
+
         static void Main(string[] args)
         {
+           
+           Menu menu = new Menu();
 
-            Menu menu = new Menu();
+            //Baza danych
+            var dbContext = new FireRedDbContext();
+            PokemonSeeder pokemonSeeder = new PokemonSeeder(dbContext);
+            pokemonSeeder.Seed();
+            
+
             if (menu.jsonDeserialize())
             {
                 Console.WriteLine("Witaj przygodo");
