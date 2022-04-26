@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FireRed.Migrations
 {
     [DbContext(typeof(FireRedDbContext))]
-    [Migration("20220424234122_Init")]
+    [Migration("20220426233329_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
