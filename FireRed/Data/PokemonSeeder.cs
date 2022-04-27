@@ -27,13 +27,15 @@ namespace FireRed.Data
                 if (!_dbContext.Pokemons.Any())
                 {
                     var pokemons = GetPokemons();
+                    var moves = GetPokemonsMoves();
                     _dbContext.Pokemons.AddRange(pokemons);
+                    _dbContext.PokemonMoves.AddRange(moves);
                     _dbContext.SaveChanges();
                 }
             }
         }
 
-        private List<PokemonMoves> GetPokemonsMovesStarters()
+        private List<PokemonMoves> GetPokemonsMoves()
         {
             var pokemonMoves = new List<PokemonMoves>()
             {
@@ -143,7 +145,7 @@ namespace FireRed.Data
                 Lv=1,
                 GenderType=Gender.Male,
                 Type="Grass-Poison",
-                PokemonMoves= new List<PokemonMoves>(GetPokemonsMovesStarters()),          
+                //PokemonMoves= GetPokemonsMoves(),          
                 PokemonStats=new PokemonStats()
                     {
                       HP=29,
@@ -162,7 +164,7 @@ namespace FireRed.Data
                 Lv=1,
                 GenderType=Gender.Male,
                 Type="Fire",
-                PokemonMoves=GetPokemonsMovesStarters(),
+               // PokemonMoves=GetPokemonsMoves(),
                 PokemonStats=new PokemonStats()
                     {
                       HP=26,
@@ -181,7 +183,7 @@ namespace FireRed.Data
                 Lv=1,
                 GenderType=Gender.Male,
                 Type="Water",
-                PokemonMoves=GetPokemonsMovesStarters(),
+               // PokemonMoves=GetPokemonsMoves(),
                 PokemonStats=new PokemonStats()
                     {
                       HP=24,

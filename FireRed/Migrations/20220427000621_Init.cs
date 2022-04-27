@@ -35,8 +35,7 @@ namespace FireRed.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GenderType = table.Column<int>(type: "int", nullable: false),
-                    PokemonStatsId = table.Column<int>(type: "int", nullable: false),
-                    PokemonMovesId = table.Column<int>(type: "int", nullable: false)
+                    PokemonStatsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

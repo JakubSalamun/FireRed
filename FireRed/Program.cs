@@ -5,13 +5,12 @@ using FireRed.Entities;
 using FireRed.Metody;
 using FireRed.Postacie;
 using FireRed.Data;
+using System.Collections.Generic;
 
 namespace FireRed
 {
     class Program : Menu
-    {
-      
-
+    {    
         static void Main(string[] args)
         {
             //Baza danych
@@ -26,11 +25,11 @@ namespace FireRed
             }
             else
             {
-                 wczytaniMenuPoczatkowe();
+                 WczytaniMenuPoczatkowe();
             }
         }
 
-      static void wczytaniMenuPoczatkowe()
+      static void WczytaniMenuPoczatkowe()
         {
             Menu menu = new Menu();
             var plikPrzywitaniaTxt = File.ReadAllText(@"C:\Users\AskIT\source\repos\FireRed\FireRed\Tekst\przywitanie.txt");
@@ -44,15 +43,28 @@ namespace FireRed
         {
             var dbContext = new FireRedDbContext();
             var pokemons = dbContext.Pokemons.ToList().Where(p=>p.Name== "Bulbasaur" || p.Name== "Charmander"|| p.Name== "Squirtle");
-          
-            
+      
+
+            //wyswitlenie listy pokemonów
+
             foreach (var item in pokemons)
             {
-                Console.WriteLine($"Name:{item.Name},Type:{item.Type}");     
+                Console.WriteLine($"Name:{item.Name},Type:{item.Type}");         
             }
-        }
 
-      static void SeedData()
+            Console.Write("Wpisz kogo wybierasz: ");
+            string wybieram = Console.ReadLine();
+
+            Protagonista protagonista = new Protagonista();
+
+           // protagonista.AddPokemonsToListOfProtagonistaPokemons(pokemonsBulba);
+            
+
+           
+
+        }
+        
+        static void SeedData()
         {
             var dbContext = new FireRedDbContext();
             PokemonSeeder pokemonSeeder = new PokemonSeeder(dbContext);
