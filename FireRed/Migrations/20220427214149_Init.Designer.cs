@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FireRed.Migrations
 {
     [DbContext(typeof(FireRedDbContext))]
-    [Migration("20220427000621_Init")]
+    [Migration("20220427214149_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -113,6 +113,9 @@ namespace FireRed.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PokemonMovesId")
+                        .HasColumnType("int");
 
                     b.Property<int>("PokemonStatsId")
                         .HasColumnType("int");

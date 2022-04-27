@@ -112,6 +112,9 @@ namespace FireRed.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PokemonMovesId")
+                        .HasColumnType("int");
+
                     b.Property<int>("PokemonStatsId")
                         .HasColumnType("int");
 
