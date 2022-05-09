@@ -39,7 +39,7 @@ namespace FireRed.Data
         {
             var pokemonMoves = new List<PokemonMoves>()
             {
-                 new PokemonMoves()
+                new PokemonMoves()
                     {
                         MoveName="Tacle",
                         PokemonCanUse=true,
@@ -159,7 +159,6 @@ namespace FireRed.Data
                       SPATK=17,
                       SPDEF=13,
                       SPEED=8,
-                    
                      }
                 },
 

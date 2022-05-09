@@ -88,7 +88,6 @@ namespace FireRed.Metody
         //Pobranie danych do pliku Json, 
         public bool jsonDeserialize()
         {
-            
             string wczytanieJSON = File.ReadAllText(@"C:\Users\AskIT\source\repos\FireRed\FireRed\JSON\protagonistaSerialized.json");
             Protagonista protagonista = JsonConvert.DeserializeObject<Protagonista>(wczytanieJSON);
             if (wczytanieJSON != null)

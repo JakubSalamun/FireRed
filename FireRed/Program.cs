@@ -12,12 +12,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FireRed
 {
-    class Program : Menu
+    class Program 
     {    
         static void Main(string[] args)
         {
             //JSON z danymi pokemon/stats/moves
-             Pokedex();
+            Pokedex();
             //Baza danych
             SeedData();
 
@@ -26,7 +26,6 @@ namespace FireRed
             {
                 Console.WriteLine("Witaj przygodo");
                 WybierzStartera();
-
             }
             else
             {
@@ -47,15 +46,15 @@ namespace FireRed
       static void WybierzStartera()
         {
             var dbContext = new FireRedDbContext();
-           
+
             var pokemons = dbContext.Pokemons
                 .Include(m => m.PokemonMoves)
                 .Include(s => s.PokemonStats)
-                .ToList();  //.ToList().Where(p => p.Name == "Bulbasaur");
+                .Where(p => p.Name == "Bulbasaur" || p.Name=="Squirtle"|| p.Name=="Charmander")
+                .ToList();
+               
       
-
             //wyswitlenie listy pokemonów
-
             foreach (var item in pokemons)
             {
                 Console.WriteLine($"Name:{item.Name},Type:{item.Type}");
@@ -82,9 +81,8 @@ namespace FireRed
   
            //uzupełnienie bazy danych
            pokemonSeeder.Seed();
-        }
-        
-        static void Pokedex()
+        }  
+      static void Pokedex()
         {
             List<PokemonMoves> GetPokemonsMoves()
             {
@@ -221,7 +219,7 @@ namespace FireRed
             }
 
             var pokemon = JsonConvert.SerializeObject(GetPokemons());
-            File.WriteAllText(@"C:\Users\AskIT\Desktop\Projekty\Pokedex.json", pokemon);
+            File.WriteAllText(@"C:\Users\AskIT\source\repos\FireRed\FireRed\JSON\Pokedex.json", pokemon);
 
 
 

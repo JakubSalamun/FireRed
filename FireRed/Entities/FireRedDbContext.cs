@@ -18,5 +18,19 @@ namespace FireRed.Entities
         {
             optionsBuilder.UseSqlServer(_connectionString);
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Pokemons>(eb =>
+            {
+                eb.HasMany(pm => pm.PokemonMoves)
+                .WithOne(p => p.Pokemons)
+                .HasForeignKey(pm => pm.PokemomId);
+
+                eb.HasOne(ps => ps.PokemonStats)
+                .WithOne(pok => pok.Pokemons)
+                .HasForeignKey<PokemonStats>(pok => pok.PokemonId);
+            });
+
+        }
     }
 }

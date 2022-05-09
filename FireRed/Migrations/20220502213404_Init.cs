@@ -7,25 +7,6 @@ namespace FireRed.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "PokemonStats",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    HP = table.Column<int>(type: "int", nullable: false),
-                    ATK = table.Column<int>(type: "int", nullable: false),
-                    DEF = table.Column<int>(type: "int", nullable: false),
-                    SPATK = table.Column<int>(type: "int", nullable: false),
-                    SPDEF = table.Column<int>(type: "int", nullable: false),
-                    SPEED = table.Column<int>(type: "int", nullable: false),
-                    PokemonId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PokemonStats", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Pokemons",
                 columns: table => new
                 {
@@ -41,12 +22,6 @@ namespace FireRed.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pokemons", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Pokemons_PokemonStats_PokemonStatsId",
-                        column: x => x.PokemonStatsId,
-                        principalTable: "PokemonStats",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -63,29 +38,53 @@ namespace FireRed.Migrations
                     MovePower = table.Column<int>(type: "int", nullable: false),
                     MoveAccurancy = table.Column<int>(type: "int", nullable: false),
                     MovePP = table.Column<int>(type: "int", nullable: false),
-                    PokemomId = table.Column<int>(type: "int", nullable: false),
-                    PokemonsId = table.Column<int>(type: "int", nullable: true)
+                    PokemomId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PokemonMoves", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PokemonMoves_Pokemons_PokemonsId",
-                        column: x => x.PokemonsId,
+                        name: "FK_PokemonMoves_Pokemons_PokemomId",
+                        column: x => x.PokemomId,
                         principalTable: "Pokemons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PokemonStats",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HP = table.Column<int>(type: "int", nullable: false),
+                    ATK = table.Column<int>(type: "int", nullable: false),
+                    DEF = table.Column<int>(type: "int", nullable: false),
+                    SPATK = table.Column<int>(type: "int", nullable: false),
+                    SPDEF = table.Column<int>(type: "int", nullable: false),
+                    SPEED = table.Column<int>(type: "int", nullable: false),
+                    PokemonId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PokemonStats", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PokemonStats_Pokemons_PokemonId",
+                        column: x => x.PokemonId,
+                        principalTable: "Pokemons",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_PokemonMoves_PokemonsId",
+                name: "IX_PokemonMoves_PokemomId",
                 table: "PokemonMoves",
-                column: "PokemonsId");
+                column: "PokemomId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pokemons_PokemonStatsId",
-                table: "Pokemons",
-                column: "PokemonStatsId",
+                name: "IX_PokemonStats_PokemonId",
+                table: "PokemonStats",
+                column: "PokemonId",
                 unique: true);
         }
 
@@ -95,10 +94,10 @@ namespace FireRed.Migrations
                 name: "PokemonMoves");
 
             migrationBuilder.DropTable(
-                name: "Pokemons");
+                name: "PokemonStats");
 
             migrationBuilder.DropTable(
-                name: "PokemonStats");
+                name: "Pokemons");
         }
     }
 }

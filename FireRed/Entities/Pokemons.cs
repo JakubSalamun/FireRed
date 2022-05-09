@@ -17,7 +17,7 @@ namespace FireRed.Entities
         public int PokemonStatsId { get; set; }
         public virtual PokemonStats PokemonStats { get; set; }
         public int PokemonMovesId { get; set; }
-        public virtual List<PokemonMoves> PokemonMoves { get; set; }
+        public virtual List<PokemonMoves> PokemonMoves { get; set; } = new List<PokemonMoves>();
 
     }
 }
